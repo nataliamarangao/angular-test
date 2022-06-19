@@ -1,19 +1,63 @@
-<h1>Eventos de component</h1>
-<!--
-<p>{{evento.Tema}}</p>
-<p>{{evento.Local}}</p>
+<h2>Eventos</h2>
 
-<h1>Lista de eventos</h1>
--->
-<!--multiplica ou repete a div-->
-<!--<div *ngFor="let item of listaEventos">
-  <p><b>Tema:</b> {{item.Tema}}</p>
-  <p><b>Local:</b> {{item.Local}}</p>
-</div>-->
-
-<h1>Lista de eventos</h1>
-
-<div *ngFor="let item of buscaEvento">
-  <p><b>Tema:</b> {{item.tema}}</p>
-  <p><b>Local:</b> {{item.local}}</p>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2">Filtro:</label>
+    <input type="text" class="form-control mr-2"
+    placeholder="Buscar"
+    [(ngModel)]="filtroLista">
+  </div>
 </div>
+<!--<h3>Filtro:{{filtroLista}}</h3>-->
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><button class="btn btn-primary btn-sm" (click)="alterarImagem()">
+        {{!mostrarImagem ? 'Ocultar Img' : 'Mostrar Img'}}
+      </button></th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="buscaEvento && buscaEvento.length"> <!--Só exibe se os eventos existirem-->
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td>{{evento.id}}</td>
+      <td>
+        <img [collapse]="mostrarImagem" [isAnimated]="true" src="/assets/{{evento.imagem}}"
+        [style.width.px]="widthImg" [style.margin.px]="marginImg">
+
+        <!--
+        <img *ngIf="mostrarImagem" src="/assets/{{evento.imagem}}"
+        [style.width.px]="widthImg" [style.margin.px]="marginImg">
+        -->
+      </td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!buscaEvento.length">
+    <tr>
+      <td colspan="5" class="text-center">
+        Nenhum evento encontrado!
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<!-- Diretivas estruturais:
+*ngIf
+*ngFor
+*ngShow
+
+----
+Binding e interpolações:
+{{eventos}} //aparece como objetos
+{{eventos[0].imagem}} //exibe a foto por ex
+{{1+1}} //retorna 2
+{{eventos | json}} //exibe o json
+-->
