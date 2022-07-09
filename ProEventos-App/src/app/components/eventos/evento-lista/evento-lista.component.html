@@ -48,7 +48,7 @@
           -->
         </td>
         <td>{{evento.tema}}</td>
-        <td class="d-none d-md-table-cell">{{evento.local}}</td>
+        <td class="d-none d-md-table-cell">{{evento.local | uppercase}}</td>
         <td>{{evento.dataEvento | DateFormatPipe}}</td>
         <td class="d-none d-md-table-cell">{{evento.qtdPessoas}}</td>
         <td class="d-none d-md-table-cell">{{evento.lotes}}</td>

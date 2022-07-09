@@ -33,6 +33,7 @@ import { NavComponent } from './shared/nav/nav.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { LoteService } from './services/lote.service';
 
 
 
@@ -75,7 +76,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
     }),
     NgxSpinnerModule
   ],
-  providers: [EventoService],
+  providers: [EventoService, LoteService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
