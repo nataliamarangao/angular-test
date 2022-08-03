@@ -26,6 +26,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale);
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { EventoService } from './services/evento.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
@@ -74,7 +75,8 @@ import { LoteService } from './services/lote.service';
       preventDuplicates: true,
       progressBar: true
     }),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxCurrencyModule
   ],
   providers: [EventoService, LoteService],
   bootstrap: [AppComponent],

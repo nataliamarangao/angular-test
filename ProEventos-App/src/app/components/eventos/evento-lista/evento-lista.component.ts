@@ -95,6 +95,7 @@ export class EventoListaComponent implements OnInit {
   }
 
   detalheEvento(id: number): void{
+    console.log(id)
     this.router.navigate([`eventos/detalhe/${id}`])
   }
 
