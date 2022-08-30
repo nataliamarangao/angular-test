@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Lote } from '@app/models/Lote';
+import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators'
 
@@ -8,7 +9,8 @@ import { take } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class LoteService {
-  baseURL = 'https://localhost:44323/api/Lotes';
+  baseURL = `${environment.apiURL}api/Lotes`;
+  //baseURL = 'https://localhost:44323/api/Lotes';
   constructor(private http: HttpClient) {}
 
   public getLotesByEventoId(eventoId: number): Observable<Lote[]> {

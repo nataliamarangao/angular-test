@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +35,9 @@ import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { LoteService } from './services/lote.service';
+import { AccountService } from './services/account.service';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -55,7 +58,8 @@ import { LoteService } from './services/lote.service';
     EventoListaComponent,
     UserComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HomeComponent,
    ],
   imports: [
     BrowserModule,
@@ -78,8 +82,12 @@ import { LoteService } from './services/lote.service';
     NgxSpinnerModule,
     NgxCurrencyModule
   ],
-  providers: [EventoService, LoteService],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [
+    EventoService,
+    LoteService,
+    AccountService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

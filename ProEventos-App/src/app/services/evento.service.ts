@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Evento } from '../models/Evento';
@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class EventoService {
-  baseURL = environment.apiURL + 'api/eventos';
+  baseURL = environment.apiURL + 'api/Eventos';
+  //tokenHeader = new HttpHeaders({'Authorization ': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`});
   constructor(private http: HttpClient) { }
 
   public getEventos(): Observable<Evento[]>{
