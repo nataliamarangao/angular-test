@@ -67,7 +67,7 @@ export class EventoDetalheComponent implements OnInit {
       this.spinner.show();
       this.estadoSalvar = 'put';
       //+ na frente converte para int
-      this.eventoService.getEventosById(this.eventoId).subscribe({
+      this.eventoService.getEventoById(this.eventoId).subscribe({
         next: (evento: Evento) => {
           //this.evento = Object.assign({}, evento);
           //Com os 3 pontinhos atribui os valores do evento

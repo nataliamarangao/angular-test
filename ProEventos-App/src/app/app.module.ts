@@ -27,6 +27,7 @@ import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 defineLocale('pt-br', ptBrLocale);
 import { NgxCurrencyModule } from 'ngx-currency';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { EventoService } from './services/evento.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
@@ -71,6 +72,7 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
     ToastrModule.forRoot({
